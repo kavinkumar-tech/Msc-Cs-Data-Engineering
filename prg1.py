@@ -1,0 +1,16 @@
+import pandas as pd
+import numpy as np
+df=pd.read_csv(r"E:\26mcs03\archive\global_tech_startups_2026.csv")
+print(df.head())
+print(df.info())
+print("Shape:",df.shape)
+print(df.describe())
+print(df.isnull().sum())
+print(df["City"].value_counts())
+Valuation_USD_Millions=df["Valuation_USD_Millions"].dropna().to_numpy()
+print("Mean Result",np.mean(Valuation_USD_Millions))
+print("Median Result",np.median(Valuation_USD_Millions))
+print("Maximum Result",np.max(Valuation_USD_Millions))
+print("Minimum Result",np.min(Valuation_USD_Millions))
+print(df[df["Current_Headcount_2026"]>90])
+print(df.groupby("City")["Valuation_USD_Millions"].mean())
